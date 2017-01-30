@@ -1,0 +1,26 @@
+<fr.and1droid.starpedia.view.PlanetDetailView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginEnd="16dp"
+    android:layout_marginStart="16dp"
+    android:orientation="vertical">
+
+    <include
+        android:id="@+id/diameter"
+        layout="@layout/detail_row_view" />
+    <include
+        android:id="@+id/gravity"
+        layout="@layout/detail_row_view" />
+    <include
+        android:id="@+id/population"
+        layout="@layout/detail_row_view" />
+    <include
+        android:id="@+id/terrain"
+        layout="@layout/detail_row_view" />
+    <include
+        android:id="@+id/climate"
+        layout="@layout/detail_row_view" />
+    <include
+        android:id="@+id/orbital_period"
+        layout="@layout/detail_row_view" />
+</fr.and1droid.starpedia.view.PlanetDetailView>

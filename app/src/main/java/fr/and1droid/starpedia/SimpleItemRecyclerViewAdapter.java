@@ -27,7 +27,7 @@ public class SimpleItemRecyclerViewAdapter extends RecyclerView.Adapter<SimpleIt
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.swentity_list_content, parent, false);
+                .inflate(R.layout.list_item, parent, false);
         return new ViewHolder(view);
     }
 
@@ -40,8 +40,8 @@ public class SimpleItemRecyclerViewAdapter extends RecyclerView.Adapter<SimpleIt
             @Override
             public void onClick(View v) {
                 if (mTwoPane) {
-                    Bundle arguments = DetailFragment.getBundle(holder.entity);
-                    DetailFragment fragment = new DetailFragment();
+                    Bundle arguments = PlanetFragment.getBundle(holder.entity);
+                    PlanetFragment fragment = new PlanetFragment();
                     fragment.setArguments(arguments);
                     ((AppCompatActivity) v.getContext()).getSupportFragmentManager().beginTransaction()
                             .replace(R.id.swentity_detail_container, fragment)

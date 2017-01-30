@@ -9,14 +9,17 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.swapi.models.Planet;
 import com.swapi.models.SWEntity;
 
-public class DetailFragment extends Fragment {
+import fr.and1droid.starpedia.view.PlanetDetailView;
+
+public class PlanetFragment extends Fragment {
 
     private static final String EXTRA_ENTITY = "EXTRA_ENTITY";
-    private SWEntity swEntity;
+    private Planet planet;
 
-    public DetailFragment() {
+    public PlanetFragment() {
     }
 
     @Override
@@ -27,26 +30,21 @@ public class DetailFragment extends Fragment {
             // Load the dummy content specified by the fragment
             // arguments. In a real-world scenario, use a Loader
             // to load content from a content provider.
-            swEntity = (SWEntity) getArguments().getSerializable(EXTRA_ENTITY);
+            planet = (Planet) getArguments().getSerializable(EXTRA_ENTITY);
 
             Activity activity = this.getActivity();
             CollapsingToolbarLayout appBarLayout = (CollapsingToolbarLayout) activity.findViewById(R.id.toolbar_layout);
             if (appBarLayout != null) {
-                appBarLayout.setTitle(swEntity.getName());
+                appBarLayout.setTitle(planet.getName());
             }
         }
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.swentity_detail, container, false);
-
-        // Show the dummy content as text in a TextView.
-        if (swEntity != null) {
-            ((TextView) rootView.findViewById(R.id.swentity_detail)).setText(swEntity.getDescription());
-        }
-
-        return rootView;
+        PlanetDetailView planetDetailView = (PlanetDetailView) inflater.inflate(R.layout.detail_planet_fragment, container, false);
+        planetDetailView.setPlanet(planet);
+        return planetDetailView;
     }
 
     public static Bundle getBundle(SWEntity entity) {

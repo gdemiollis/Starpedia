@@ -1,4 +1,12 @@
 <resources>
     <string name="app_name">Starpedia</string>
     <string name="title_swentity_detail">SWEntity Detail</string>
+    <string name="gravity">Gravity</string>
+    <string name="_km">%s km</string>
+    <string name="_ms2">%s m/s2</string>
+    <string name="diameter">Diameter</string>
+    <string name="population">Population</string>
+    <string name="terrain">Terrain</string>
+    <string name="climate">Climate</string>
+    <string name="orbital_period">Orbital period</string>
 </resources>

@@ -27,7 +27,7 @@
         android:layout_marginRight="16dp"
         app:layoutManager="LinearLayoutManager"
         tools:context="fr.and1droid.starpedia.ListActivity"
-        tools:listitem="@layout/swentity_list_content" />
+        tools:listitem="@layout/list_item" />
 
     <FrameLayout
         android:id="@+id/swentity_detail_container"

@@ -27,7 +27,7 @@
         android:layout_height="match_parent"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-        <include layout="@layout/swentity_list" />
+        <include layout="@layout/list_view" />
     </FrameLayout>
 
     <android.support.design.widget.FloatingActionButton

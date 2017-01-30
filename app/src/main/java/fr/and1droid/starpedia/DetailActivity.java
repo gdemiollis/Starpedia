@@ -18,7 +18,7 @@ public class DetailActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_swentity_detail);
+        setContentView(R.layout.detail_activity);
         setSupportActionBar((Toolbar) findViewById(R.id.detail_toolbar));
         // Show the Up button in the action bar.
         ActionBar actionBar = getSupportActionBar();
@@ -35,7 +35,7 @@ public class DetailActivity extends AppCompatActivity {
         });
 
         if (savedInstanceState == null) {
-            DetailFragment fragment = new DetailFragment();
+            PlanetFragment fragment = new PlanetFragment();
             fragment.setArguments(getIntent().getExtras());
             getSupportFragmentManager().beginTransaction()
                     .add(R.id.swentity_detail_container, fragment)
@@ -55,7 +55,7 @@ public class DetailActivity extends AppCompatActivity {
 
     public static Intent newIntent(Context context, SWEntity entity) {
         Intent intent = new Intent(context, DetailActivity.class);
-        intent.putExtras(DetailFragment.getBundle(entity));
+        intent.putExtras(PlanetFragment.getBundle(entity));
         return intent;
     }
 }
