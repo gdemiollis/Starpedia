@@ -7,19 +7,18 @@ import java.io.IOException;
 import java.util.List;
 
 import fr.and1droid.starpedia.BaseService;
-import fr.and1droid.starpedia.RequestCallback;
 
-public class PlanetService extends BaseService<List<Planet>>{
+public class PlanetService extends BaseService<List<Planet>> {
 
     private final PlanetApi planetApi;
 
-    public PlanetService(RequestCallback<List<Planet>> callback) {
-        super(callback);
+    public PlanetService() {
+        super();
         planetApi = new PlanetApi();
     }
 
     @Override
-    protected List<Planet> execute() throws IOException {
+    protected List<Planet> invoke() throws IOException {
         return planetApi.listPlanets();
     }
 }

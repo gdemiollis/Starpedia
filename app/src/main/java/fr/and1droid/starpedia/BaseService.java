@@ -1,10 +1,8 @@
 package fr.and1droid.starpedia;
 
-import com.swapi.http.PlanetApi;
 import com.swapi.models.Planet;
 
 import java.io.IOException;
-import java.util.Collection;
 import java.util.List;
 import java.util.concurrent.Callable;
 
@@ -14,18 +12,15 @@ import io.reactivex.functions.Consumer;
 import io.reactivex.schedulers.Schedulers;
 
 public abstract class BaseService<E> {
-    private RequestCallback<E> callback;
 
-    public BaseService(RequestCallback<E> callback) {
-        this.callback = callback;
+    public BaseService() {
     }
 
-    public void invoke() {
-        final PlanetApi planetApi = new PlanetApi();
+    public void execute(final RequestCallback<E> callback) {
         Flowable.fromCallable(new Callable<E>() {
             @Override
             public E call() throws Exception {
-                return execute();
+                return invoke();
             }
         })
                 .subscribeOn(Schedulers.io())
@@ -44,5 +39,5 @@ public abstract class BaseService<E> {
                 });
     }
 
-    protected abstract E execute() throws IOException;
+    protected abstract E invoke() throws IOException;
 }

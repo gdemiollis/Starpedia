@@ -15,13 +15,20 @@ import com.swapi.models.Planet;
 
 import java.util.List;
 
+import javax.inject.Inject;
+
+import fr.and1droid.starpedia.injection.GraphProvider;
 import fr.and1droid.starpedia.service.PlanetService;
 
 public class ListActivity extends AppCompatActivity {
 
+    @Inject
+    PlanetService planetService;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        GraphProvider.injectIn(this);
         setContentView(R.layout.list_activity);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -44,7 +51,7 @@ public class ListActivity extends AppCompatActivity {
 
     private void setupRecyclerView(@NonNull final RecyclerView recyclerView) {
         final boolean mTwoPane = findViewById(R.id.swentity_detail_container) != null;
-        new PlanetService(new RequestCallback<List<Planet>>() {
+        planetService.execute(new RequestCallback<List<Planet>>() {
             @Override
             public void onSuccess(List<Planet> planets) {
                 SimpleItemRecyclerViewAdapter adapter = new SimpleItemRecyclerViewAdapter(planets, mTwoPane);
@@ -56,7 +63,7 @@ public class ListActivity extends AppCompatActivity {
                 Log.e(getClass().getSimpleName(), throwable.getMessage(), throwable);
                 Toast.makeText(ListActivity.this, throwable.getMessage(), Toast.LENGTH_LONG).show();
             }
-        }).invoke();
+        });
 
 
     }
