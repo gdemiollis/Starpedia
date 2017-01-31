@@ -11,16 +11,11 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
-import com.swapi.http.PlanetApi;
 import com.swapi.models.Planet;
 
 import java.util.List;
-import java.util.concurrent.Callable;
 
-import io.reactivex.Flowable;
-import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.functions.Consumer;
-import io.reactivex.schedulers.Schedulers;
+import fr.and1droid.starpedia.service.PlanetService;
 
 public class ListActivity extends AppCompatActivity {
 
@@ -49,28 +44,19 @@ public class ListActivity extends AppCompatActivity {
 
     private void setupRecyclerView(@NonNull final RecyclerView recyclerView) {
         final boolean mTwoPane = findViewById(R.id.swentity_detail_container) != null;
-        final PlanetApi planetApi = new PlanetApi();
-        Flowable.fromCallable(new Callable<List<Planet>>() {
+        new PlanetService(new RequestCallback<List<Planet>>() {
             @Override
-            public List<Planet> call() throws Exception {
-                return planetApi.listPlanets();
+            public void onSuccess(List<Planet> planets) {
+                SimpleItemRecyclerViewAdapter adapter = new SimpleItemRecyclerViewAdapter(planets, mTwoPane);
+                recyclerView.setAdapter(adapter);
             }
-        })
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Consumer<List<Planet>>() {
-                    @Override
-                    public void accept(List<Planet> planets) throws Exception {
-                        SimpleItemRecyclerViewAdapter adapter = new SimpleItemRecyclerViewAdapter(planets, mTwoPane);
-                        recyclerView.setAdapter(adapter);
-                    }
-                }, new Consumer<Throwable>() {
-                    @Override
-                    public void accept(Throwable throwable) throws Exception {
-                        Log.e(getClass().getSimpleName(), throwable.getMessage(), throwable);
-                        Toast.makeText(ListActivity.this, throwable.getMessage(), Toast.LENGTH_LONG).show();
-                    }
-                });
+
+            @Override
+            public void onFail(Throwable throwable) {
+                Log.e(getClass().getSimpleName(), throwable.getMessage(), throwable);
+                Toast.makeText(ListActivity.this, throwable.getMessage(), Toast.LENGTH_LONG).show();
+            }
+        }).invoke();
 
 
     }
