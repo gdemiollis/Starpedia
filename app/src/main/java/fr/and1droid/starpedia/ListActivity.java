@@ -1,9 +1,10 @@
 package fr.and1droid.starpedia;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
+import android.support.annotation.StringRes;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
@@ -22,8 +23,15 @@ import fr.and1droid.starpedia.service.PlanetService;
 
 public class ListActivity extends AppCompatActivity {
 
+    private static final String EXTRA_CATEGORY = "EXTRA_CATEGORY";
     @Inject
     PlanetService planetService;
+
+    public static Intent newIntent(Context context, @StringRes int category) {
+        Intent intent = new Intent(context, ListActivity.class);
+        intent.putExtra(EXTRA_CATEGORY, category);
+        return intent;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,22 +39,17 @@ public class ListActivity extends AppCompatActivity {
         GraphProvider.injectIn(this);
         setContentView(R.layout.list_activity);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        toolbar.setTitle(getTitle());
-
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
+        initToolbar();
 
         View recyclerView = findViewById(R.id.swentity_list);
         assert recyclerView != null;
         setupRecyclerView((RecyclerView) recyclerView);
+    }
+
+    private void initToolbar() {
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        toolbar.setTitle(getTitle());
     }
 
     private void setupRecyclerView(@NonNull final RecyclerView recyclerView) {
@@ -54,7 +57,7 @@ public class ListActivity extends AppCompatActivity {
         planetService.execute(new RequestCallback<List<Planet>>() {
             @Override
             public void onSuccess(List<Planet> planets) {
-                SimpleItemRecyclerViewAdapter adapter = new SimpleItemRecyclerViewAdapter(planets, mTwoPane);
+                EntityRecyclerViewAdapter adapter = new EntityRecyclerViewAdapter(planets, mTwoPane);
                 recyclerView.setAdapter(adapter);
             }
 
@@ -64,7 +67,5 @@ public class ListActivity extends AppCompatActivity {
                 Toast.makeText(ListActivity.this, throwable.getMessage(), Toast.LENGTH_LONG).show();
             }
         });
-
-
     }
 }

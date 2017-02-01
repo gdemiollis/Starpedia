@@ -9,4 +9,9 @@
     <string name="terrain">Terrain</string>
     <string name="climate">Climate</string>
     <string name="orbital_period">Orbital period</string>
+    <string name="title_activity_main">Starpedia</string>
+    <string name="planets">Planets</string>
+    <string name="people">People</string>
+    <string name="films">Films</string>
+    <string name="spaceships">Spaceships</string>
 </resources>

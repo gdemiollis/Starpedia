@@ -14,12 +14,12 @@ import com.swapi.models.SWEntity;
 
 import java.util.List;
 
-public class SimpleItemRecyclerViewAdapter extends RecyclerView.Adapter<SimpleItemRecyclerViewAdapter.ViewHolder> {
+public class EntityRecyclerViewAdapter extends RecyclerView.Adapter<EntityRecyclerViewAdapter.ViewHolder> {
 
     private final List<? extends SWEntity> mValues;
     private boolean mTwoPane;
 
-    public SimpleItemRecyclerViewAdapter(List<? extends SWEntity> items, boolean mTwoPane) {
+    public EntityRecyclerViewAdapter(List<? extends SWEntity> items, boolean mTwoPane) {
         this.mValues = items;
         this.mTwoPane = mTwoPane;
     }
@@ -36,7 +36,7 @@ public class SimpleItemRecyclerViewAdapter extends RecyclerView.Adapter<SimpleIt
         holder.entity = mValues.get(position);
         holder.contentView.setText(holder.entity.getName());
 
-        holder.view.setOnClickListener(new View.OnClickListener() {
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (mTwoPane) {
@@ -62,12 +62,10 @@ public class SimpleItemRecyclerViewAdapter extends RecyclerView.Adapter<SimpleIt
 
     static class ViewHolder extends RecyclerView.ViewHolder {
         public final TextView contentView;
-        private final View view;
         public SWEntity entity;
 
         public ViewHolder(View view) {
             super(view);
-            this.view = view;
             contentView = (TextView) view.findViewById(R.id.content);
         }
 
