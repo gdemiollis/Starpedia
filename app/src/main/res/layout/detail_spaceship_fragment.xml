@@ -6,21 +6,15 @@
     android:orientation="vertical">
 
     <include
-        android:id="@+id/diameter"
+        android:id="@+id/cost"
         layout="@layout/detail_row_view" />
     <include
-        android:id="@+id/gravity"
+        android:id="@+id/length"
         layout="@layout/detail_row_view" />
     <include
-        android:id="@+id/population"
+        android:id="@+id/crew"
         layout="@layout/detail_row_view" />
     <include
-        android:id="@+id/terrain"
-        layout="@layout/detail_row_view" />
-    <include
-        android:id="@+id/climate"
-        layout="@layout/detail_row_view" />
-    <include
-        android:id="@+id/orbital_period"
+        android:id="@+id/max_atmosphering_speed"
         layout="@layout/detail_row_view" />
 </fr.and1droid.starpedia.ui.detail.spaceship.SpaceshipDetailView>

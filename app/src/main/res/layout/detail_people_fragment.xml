@@ -6,21 +6,18 @@
     android:orientation="vertical">
 
     <include
-        android:id="@+id/diameter"
+        android:id="@+id/birth_year"
         layout="@layout/detail_row_view" />
     <include
-        android:id="@+id/gravity"
+        android:id="@+id/eye"
         layout="@layout/detail_row_view" />
     <include
-        android:id="@+id/population"
+        android:id="@+id/hair"
         layout="@layout/detail_row_view" />
     <include
-        android:id="@+id/terrain"
+        android:id="@+id/height"
         layout="@layout/detail_row_view" />
     <include
-        android:id="@+id/climate"
-        layout="@layout/detail_row_view" />
-    <include
-        android:id="@+id/orbital_period"
+        android:id="@+id/gender"
         layout="@layout/detail_row_view" />
 </fr.and1droid.starpedia.ui.detail.people.PeopleDetailView>

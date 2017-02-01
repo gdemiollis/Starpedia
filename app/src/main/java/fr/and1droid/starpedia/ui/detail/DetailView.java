@@ -2,7 +2,11 @@ package fr.and1droid.starpedia.ui.detail;
 
 import android.content.Context;
 import android.os.Build;
+import android.support.annotation.DrawableRes;
+import android.support.annotation.IdRes;
+import android.support.annotation.LayoutRes;
 import android.support.annotation.RequiresApi;
+import android.support.annotation.StringRes;
 import android.util.AttributeSet;
 import android.widget.LinearLayout;
 
@@ -30,9 +34,9 @@ public abstract class DetailView<E extends SWEntity> extends LinearLayout {
 
     public abstract void setEntity(E entity);
 
-    protected void initRow(int gravity, int key, String value, int ic_gravity) {
-        ((RowView) findViewById(gravity))
-                .withKey(key).withValue(value)
+    protected void initRow(@IdRes int viewId, @StringRes int key, String value, @DrawableRes int ic_gravity) {
+        ((RowView) findViewById(viewId))
+                .withKey(key)
                 .withValue(value)
                 .withIcon(ic_gravity);
     }

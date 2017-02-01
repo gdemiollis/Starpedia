@@ -6,21 +6,13 @@
     android:orientation="vertical">
 
     <include
-        android:id="@+id/diameter"
+        android:id="@+id/release_date"
         layout="@layout/detail_row_view" />
     <include
-        android:id="@+id/gravity"
+        android:id="@+id/director"
         layout="@layout/detail_row_view" />
-    <include
-        android:id="@+id/population"
-        layout="@layout/detail_row_view" />
-    <include
-        android:id="@+id/terrain"
-        layout="@layout/detail_row_view" />
-    <include
-        android:id="@+id/climate"
-        layout="@layout/detail_row_view" />
-    <include
-        android:id="@+id/orbital_period"
-        layout="@layout/detail_row_view" />
+    <TextView
+        android:id="@+id/opening_crawl"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 </fr.and1droid.starpedia.ui.detail.film.FilmDetailView>

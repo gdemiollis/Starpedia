@@ -32,7 +32,11 @@ public class SpaceshipDetailView extends DetailView<Starship> {
     }
 
     @Override
-    public void setEntity(Starship planet) {
+    public void setEntity(Starship entity) {
+        initRow(R.id.cost, R.string.cost, entity.costInCredits, R.drawable.ic_cost);
+        initRow(R.id.length, R.string.length, entity.length, R.drawable.ic_height);
+        initRow(R.id.crew, R.string.crew, entity.crew, R.drawable.ic_population);
+        initRow(R.id.max_atmosphering_speed, R.string.max_atmosphering_speed, entity.maxAtmospheringSpeed, R.drawable.ic_speed);
     }
 
 }

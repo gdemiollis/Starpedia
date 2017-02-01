@@ -4,10 +4,11 @@ import android.content.Context;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
 import android.util.AttributeSet;
+import android.widget.TextView;
 
 import com.swapi.model.Film;
-import com.swapi.model.People;
 
+import fr.and1droid.starpedia.R;
 import fr.and1droid.starpedia.ui.detail.DetailView;
 
 public class FilmDetailView extends DetailView<Film> {
@@ -30,6 +31,8 @@ public class FilmDetailView extends DetailView<Film> {
 
     @Override
     public void setEntity(Film entity) {
-
+        initRow(R.id.release_date, R.string.release_date, entity.release_date, R.drawable.ic_release_date);
+        initRow(R.id.director, R.string.director, entity.director, R.drawable.ic_director);
+        ((TextView) findViewById(R.id.opening_crawl)).setText(entity.openingCrawl);
     }
 }
