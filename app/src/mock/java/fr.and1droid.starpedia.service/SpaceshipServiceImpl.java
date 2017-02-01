@@ -23,6 +23,7 @@ public class SpaceshipServiceImpl implements SpaceshipService {
         starship.costInCredits = "" + i * 10000;
         starship.length = "" + i * 45;
         starship.crew = "" + i * 567;
+        starship.maxAtmospheringSpeed = "" + i * 34;
         return starship;
     }
 }
