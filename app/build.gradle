@@ -21,6 +21,13 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_7
         targetCompatibility JavaVersion.VERSION_1_7
     }
+    productFlavors {
+        mock {
+            minSdkVersion 21
+        }
+        remote {
+        }
+    }
 }
 
 dependencies {

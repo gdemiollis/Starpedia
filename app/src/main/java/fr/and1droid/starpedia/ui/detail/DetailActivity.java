@@ -52,7 +52,8 @@ public class DetailActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         if (id == android.R.id.home) {
-            navigateUpTo(new Intent(this, ListActivity.class));
+            super.onBackPressed();
+            super.onBackPressed();
             return true;
         }
         return super.onOptionsItemSelected(item);
