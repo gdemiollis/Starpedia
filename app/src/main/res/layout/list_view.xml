@@ -9,5 +9,5 @@
     android:layout_marginLeft="16dp"
     android:layout_marginRight="16dp"
     app:layoutManager="LinearLayoutManager"
-    tools:context="fr.and1droid.starpedia.ListActivity"
+    tools:context="fr.and1droid.starpedia.ui.list.ListActivity"
     tools:listitem="@layout/list_item" />

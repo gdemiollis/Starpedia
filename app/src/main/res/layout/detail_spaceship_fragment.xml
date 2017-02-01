@@ -1,4 +1,4 @@
-<fr.and1droid.starpedia.ui.detail.planet.PlanetDetailView xmlns:android="http://schemas.android.com/apk/res/android"
+<fr.and1droid.starpedia.ui.detail.spaceship.SpaceshipDetailView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_marginEnd="16dp"
@@ -23,4 +23,4 @@
     <include
         android:id="@+id/orbital_period"
         layout="@layout/detail_row_view" />
-</fr.and1droid.starpedia.ui.detail.planet.PlanetDetailView>
+</fr.and1droid.starpedia.ui.detail.spaceship.SpaceshipDetailView>

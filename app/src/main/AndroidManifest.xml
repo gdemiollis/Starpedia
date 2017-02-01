@@ -12,7 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".MainActivity"
+            android:name=".ui.home.HomeActivity"
             android:label="@string/title_activity_main"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
@@ -22,17 +22,17 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ListActivity"
+            android:name=".ui.list.ListActivity"
             android:label="@string/app_name"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".DetailActivity"
+            android:name=".ui.detail.DetailActivity"
             android:label="@string/title_swentity_detail"
-            android:parentActivityName=".ListActivity"
+            android:parentActivityName=".ui.list.ListActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="fr.and1droid.starpedia.ListActivity" />
+                android:value="fr.and1droid.starpedia.ui.list.ListActivity" />
         </activity>
 
     </application>

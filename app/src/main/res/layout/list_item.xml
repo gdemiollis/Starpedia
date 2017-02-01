@@ -5,9 +5,10 @@
     android:layout_height="56dp">
 
     <ImageView
+        android:id="@+id/icon"
         android:layout_width="40dp"
-        android:layout_height="match_parent"
-        android:src="@drawable/ic_planet" />
+        tools:src="@drawable/ic_planet"
+        android:layout_height="match_parent" />
 
     <TextView
         android:id="@+id/content"

@@ -1,6 +1,9 @@
 package fr.and1droid.starpedia.injection;
 
-import fr.and1droid.starpedia.ListActivity;
+import fr.and1droid.starpedia.service.ServiceFactory;
+import fr.and1droid.starpedia.ui.detail.DetailActivity;
+import fr.and1droid.starpedia.ui.list.EntityRecyclerViewAdapter;
+import fr.and1droid.starpedia.ui.list.ListActivity;
 
 public final class GraphProvider {
 
@@ -14,6 +17,24 @@ public final class GraphProvider {
     }
 
     public static void injectIn(final ListActivity target) {
+        if (graph != null) {
+            graph.mainComponent.inject(target);
+        }
+    }
+
+    public static void injectIn(ServiceFactory target) {
+        if (graph != null) {
+            graph.mainComponent.inject(target);
+        }
+    }
+
+    public static void injectIn(EntityRecyclerViewAdapter target) {
+        if (graph != null) {
+            graph.mainComponent.inject(target);
+        }
+    }
+
+    public static void injectIn(DetailActivity target) {
         if (graph != null) {
             graph.mainComponent.inject(target);
         }

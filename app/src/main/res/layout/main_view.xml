@@ -10,5 +10,5 @@
     android:fitsSystemWindows="true"
     app:layoutManager="android.support.v7.widget.GridLayoutManager"
     app:spanCount="2"
-    tools:context="fr.and1droid.starpedia.MainActivity"
+    tools:context="fr.and1droid.starpedia.ui.home.HomeActivity"
     tools:listitem="@layout/category_item" />

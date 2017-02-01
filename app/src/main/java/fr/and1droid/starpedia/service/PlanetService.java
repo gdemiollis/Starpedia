@@ -1,12 +1,10 @@
 package fr.and1droid.starpedia.service;
 
 import com.swapi.http.PlanetApi;
-import com.swapi.models.Planet;
+import com.swapi.model.Planet;
 
 import java.io.IOException;
 import java.util.List;
-
-import fr.and1droid.starpedia.BaseService;
 
 public class PlanetService extends BaseService<List<Planet>> {
 

@@ -1,9 +1,6 @@
-package fr.and1droid.starpedia;
-
-import com.swapi.models.Planet;
+package fr.and1droid.starpedia.service;
 
 import java.io.IOException;
-import java.util.List;
 import java.util.concurrent.Callable;
 
 import io.reactivex.Flowable;

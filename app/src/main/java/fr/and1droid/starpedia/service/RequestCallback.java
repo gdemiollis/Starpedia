@@ -1,4 +1,4 @@
-package fr.and1droid.starpedia;
+package fr.and1droid.starpedia.service;
 
 public interface RequestCallback<E> {
 

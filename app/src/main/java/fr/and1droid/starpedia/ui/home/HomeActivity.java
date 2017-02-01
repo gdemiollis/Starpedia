@@ -1,4 +1,4 @@
-package fr.and1droid.starpedia;
+package fr.and1droid.starpedia.ui.home;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -9,11 +9,13 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
-import com.swapi.models.Planet;
+import com.swapi.model.Planet;
 
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity {
+import fr.and1droid.starpedia.R;
+
+public class HomeActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

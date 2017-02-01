@@ -1,4 +1,4 @@
-<fr.and1droid.starpedia.view.PlanetRowView xmlns:android="http://schemas.android.com/apk/res/android"
+<fr.and1droid.starpedia.ui.detail.RowView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="72dp"
@@ -42,4 +42,4 @@
 
 
     </LinearLayout>
-</fr.and1droid.starpedia.view.PlanetRowView>
+</fr.and1droid.starpedia.ui.detail.RowView>

@@ -1,9 +1,7 @@
-package fr.and1droid.starpedia;
+package fr.and1droid.starpedia.ui.home;
 
 import android.content.Context;
 import android.content.Intent;
-import android.support.annotation.StringRes;
-import android.support.v4.util.Pair;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,8 +9,19 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.swapi.model.Category;
+
 import java.util.ArrayList;
 import java.util.List;
+
+import fr.and1droid.starpedia.R;
+import fr.and1droid.starpedia.ui.list.ListActivity;
+import fr.and1droid.starpedia.util.CategoryUtil;
+
+import static com.swapi.model.Category.Film;
+import static com.swapi.model.Category.People;
+import static com.swapi.model.Category.Planet;
+import static com.swapi.model.Category.Starship;
 
 public class CategoryRecyclerViewAdapter extends RecyclerView.Adapter<CategoryRecyclerViewAdapter.ViewHolder> {
 
@@ -20,13 +29,13 @@ public class CategoryRecyclerViewAdapter extends RecyclerView.Adapter<CategoryRe
     //    a novice programmer would hardcode it
     //    an experienced programmer would make a general engine feature
     //    a veteran programmer would hardcode it
-    private final List<Pair<Integer, Integer>> mValues = new ArrayList<>();
+    private final List<Category> mValues = new ArrayList<>();
 
     public CategoryRecyclerViewAdapter() {
-        mValues.add(new Pair<>(R.string.planets, R.drawable.ic_planet));
-        mValues.add(new Pair<>(R.string.people, R.drawable.ic_population));
-        mValues.add(new Pair<>(R.string.films, R.drawable.ic_movie));
-        mValues.add(new Pair<>(R.string.spaceships, R.drawable.ic_spaceship));
+        mValues.add(Planet);
+        mValues.add(People);
+        mValues.add(Film);
+        mValues.add(Starship);
     }
 
     @Override
@@ -38,10 +47,9 @@ public class CategoryRecyclerViewAdapter extends RecyclerView.Adapter<CategoryRe
 
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
-        Pair<Integer, Integer> pair = mValues.get(position);
-        holder.category = pair.first;
-        holder.textView.setText(pair.first);
-        holder.imageView.setImageResource(pair.second);
+        holder.category = mValues.get(position);
+        holder.textView.setText(CategoryUtil.getTextByCaterory(holder.category));
+        holder.imageView.setImageResource(CategoryUtil.getImageByCategory(holder.category));
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -59,13 +67,11 @@ public class CategoryRecyclerViewAdapter extends RecyclerView.Adapter<CategoryRe
     }
 
     static class ViewHolder extends RecyclerView.ViewHolder {
-        public final TextView textView;
-        public final ImageView imageView;
-        public
-        @StringRes
-        int category;
+        final TextView textView;
+        final ImageView imageView;
+        Category category;
 
-        public ViewHolder(View view) {
+        ViewHolder(View view) {
             super(view);
             this.textView = (TextView) view.findViewById(R.id.textView);
             this.imageView = (ImageView) view.findViewById(R.id.imageView);

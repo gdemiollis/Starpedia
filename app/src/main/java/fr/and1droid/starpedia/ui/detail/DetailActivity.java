@@ -1,28 +1,37 @@
-package fr.and1droid.starpedia;
+package fr.and1droid.starpedia.ui.detail;
 
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
+import android.support.v4.app.Fragment;
 import android.support.v7.widget.Toolbar;
-import android.view.View;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.app.ActionBar;
 import android.view.MenuItem;
 
-import com.swapi.models.SWEntity;
+import com.swapi.model.SWEntity;
+
+import javax.inject.Inject;
+
+import fr.and1droid.starpedia.R;
+import fr.and1droid.starpedia.injection.GraphProvider;
+import fr.and1droid.starpedia.ui.detail.planet.PlanetFragment;
+import fr.and1droid.starpedia.ui.list.ListActivity;
 
 public class DetailActivity extends AppCompatActivity {
+
+    @Inject
+    FragmentFactory fragmentFactory;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.detail_activity);
+        GraphProvider.injectIn(this);
         initActionBar();
 
         if (savedInstanceState == null) {
-            PlanetFragment fragment = new PlanetFragment();
+            Fragment fragment = fragmentFactory.getFragment(BaseFragment.getEntity(getIntent().getExtras()));
             fragment.setArguments(getIntent().getExtras());
             getSupportFragmentManager().beginTransaction()
                     .add(R.id.swentity_detail_container, fragment)
