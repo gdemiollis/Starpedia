@@ -13,7 +13,7 @@ public abstract class BaseServiceImpl<E> implements BaseService<E> {
     public BaseServiceImpl() {
     }
 
-    public void execute(final RequestCallback<E> callback) {
+    public void list(final RequestCallback<E> callback) {
         Flowable.fromCallable(new Callable<E>() {
             @Override
             public E call() throws Exception {

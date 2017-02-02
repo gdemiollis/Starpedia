@@ -8,7 +8,7 @@ import java.util.List;
 public class FilmServiceImpl implements FilmService {
 
     @Override
-    public void execute(RequestCallback<List<Film>> requestCallback) {
+    public void list(RequestCallback<List<Film>> requestCallback) {
         List<Film> result = new ArrayList<>();
         result.add(buildFilm(1));
         result.add(buildFilm(2));
@@ -17,7 +17,7 @@ public class FilmServiceImpl implements FilmService {
         requestCallback.onSuccess(result);
     }
 
-    private Film buildFilm(int i) {
+    static Film buildFilm(int i) {
         Film film = new Film();
         film.title = "Film " + i;
         film.release_date = "2016/06/0" + i;

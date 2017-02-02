@@ -8,7 +8,7 @@ import java.util.List;
 public class PlanetServiceImpl implements PlanetService {
 
     @Override
-    public void execute(RequestCallback<List<Planet>> requestCallback) {
+    public void list(RequestCallback<List<Planet>> requestCallback) {
         List<Planet> result = new ArrayList<>();
         result.add(buildPlanet(1));
         result.add(buildPlanet(2));
@@ -17,7 +17,7 @@ public class PlanetServiceImpl implements PlanetService {
         requestCallback.onSuccess(result);
     }
 
-    private Planet buildPlanet(int i) {
+    static  Planet buildPlanet(int i) {
         Planet planet = new Planet();
         planet.name = "Planet " + i;
         planet.gravity = "" + i * 10;

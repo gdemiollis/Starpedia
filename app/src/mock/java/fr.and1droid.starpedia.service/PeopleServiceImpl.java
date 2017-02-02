@@ -8,7 +8,7 @@ import java.util.List;
 public class PeopleServiceImpl implements PeopleService {
 
     @Override
-    public void execute(RequestCallback<List<People>> requestCallback) {
+    public void list(RequestCallback<List<People>> requestCallback) {
         List<People> result = new ArrayList<>();
         result.add(buildPeople(1));
         result.add(buildPeople(2));
@@ -17,7 +17,7 @@ public class PeopleServiceImpl implements PeopleService {
         requestCallback.onSuccess(result);
     }
 
-    private People buildPeople(int i) {
+    static People buildPeople(int i) {
         People people = new People();
         people.name = "People " + i;
         people.birthYear = "198" + i;

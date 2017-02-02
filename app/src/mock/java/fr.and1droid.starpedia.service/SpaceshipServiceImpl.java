@@ -8,7 +8,7 @@ import java.util.List;
 public class SpaceshipServiceImpl implements SpaceshipService {
 
     @Override
-    public void execute(RequestCallback<List<Starship>> requestCallback) {
+    public void list(RequestCallback<List<Starship>> requestCallback) {
         List<Starship> result = new ArrayList<>();
         result.add(buildStarShip(1));
         result.add(buildStarShip(2));
@@ -17,7 +17,7 @@ public class SpaceshipServiceImpl implements SpaceshipService {
         requestCallback.onSuccess(result);
     }
 
-    private Starship buildStarShip(int i) {
+    static  Starship buildStarShip(int i) {
         Starship starship = new Starship();
         starship.name = "Starship " + i;
         starship.costInCredits = "" + i * 10000;

@@ -59,7 +59,7 @@ public class ListActivity extends AppCompatActivity {
     private void setupRecyclerView(@NonNull final RecyclerView recyclerView) {
         final boolean mTwoPane = findViewById(R.id.swentity_detail_container) != null;
         BaseService<List<SWEntity>> service = serviceFactory.getService((Category) getIntent().getSerializableExtra(EXTRA_CATEGORY));
-        service.execute(new RequestCallback<List<SWEntity>>() {
+        service.list(new RequestCallback<List<SWEntity>>() {
             @Override
             public void onSuccess(List<SWEntity> entities) {
                 EntityRecyclerViewAdapter adapter = new EntityRecyclerViewAdapter(entities, mTwoPane);
