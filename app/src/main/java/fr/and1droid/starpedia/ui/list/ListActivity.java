@@ -3,7 +3,6 @@ package fr.and1droid.starpedia.ui.list;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
@@ -30,6 +29,8 @@ public class ListActivity extends AppCompatActivity {
     ServiceFactory serviceFactory;
 
     private static final String EXTRA_CATEGORY = "EXTRA_CATEGORY";
+    private View progressBar;
+    private RecyclerView recyclerView;
 
     public static Intent newIntent(Context context, Category category) {
         Intent intent = new Intent(context, ListActivity.class);
@@ -44,10 +45,9 @@ public class ListActivity extends AppCompatActivity {
         setContentView(R.layout.list_activity);
 
         initToolbar();
-
-        View recyclerView = findViewById(R.id.swentity_list);
-        assert recyclerView != null;
-        setupRecyclerView((RecyclerView) recyclerView);
+        progressBar = findViewById(R.id.progress);
+        recyclerView = (RecyclerView) findViewById(R.id.swentity_list);
+        setupRecyclerView();
     }
 
     private void initToolbar() {
@@ -56,20 +56,26 @@ public class ListActivity extends AppCompatActivity {
         toolbar.setTitle(getTitle());
     }
 
-    private void setupRecyclerView(@NonNull final RecyclerView recyclerView) {
+    private void setupRecyclerView() {
         final boolean mTwoPane = findViewById(R.id.swentity_detail_container) != null;
+        progressBar.setVisibility(View.VISIBLE);
+        recyclerView.setVisibility(View.GONE);
         BaseService<List<SWEntity>> service = serviceFactory.getService((Category) getIntent().getSerializableExtra(EXTRA_CATEGORY));
         service.list(new RequestCallback<List<SWEntity>>() {
             @Override
             public void onSuccess(List<SWEntity> entities) {
                 EntityRecyclerViewAdapter adapter = new EntityRecyclerViewAdapter(entities, mTwoPane);
                 recyclerView.setAdapter(adapter);
+                progressBar.setVisibility(View.GONE);
+                recyclerView.setVisibility(View.VISIBLE);
             }
 
             @Override
             public void onFail(Throwable throwable) {
                 Log.e(getClass().getSimpleName(), throwable.getMessage(), throwable);
                 Toast.makeText(ListActivity.this, throwable.getMessage(), Toast.LENGTH_LONG).show();
+                progressBar.setVisibility(View.GONE);
+                recyclerView.setVisibility(View.VISIBLE);
             }
         });
     }
