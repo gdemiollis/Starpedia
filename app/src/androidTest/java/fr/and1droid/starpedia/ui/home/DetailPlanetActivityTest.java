@@ -40,7 +40,7 @@ public class DetailPlanetActivityTest {
         onView(withId(R.id.swentity_list)).perform(actionOnItemAtPosition(0, click()));
 
 
-        onView(withContentDescription("Navigate up")).check(matches(isDisplayed()));
+        onView(withContentDescription(R.string.abc_action_bar_up_description)).check(matches(isDisplayed()));
 
         onView(allOf(withId(R.id.value),
                 childAtPosition(childAtPosition(withId(R.id.diameter), 1), 0)))
