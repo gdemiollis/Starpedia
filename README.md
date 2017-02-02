@@ -25,7 +25,13 @@ Ce dernier est devenu indispensable dans mon expérience actuelle car
   - Lors des tests UI, je ne suis plus dépendant de latences réseaux.
 
 ## Injection de dépendance
-Couplé aux Flavors, l'injection de dépendance est très puissante et permet de tester assez facilement n'importe que parie de l'application sans se poser la question de
+Couplé aux Flavors, l'injection de dépendance est très puissante et permet de tester assez facilement n'importe que parie de l'application sans se demander comment récupérer tel singleton.
+
+## CustomView
+J'applique le [Single responsibility principle](https://en.wikipedia.org/wiki/Single_responsibility_principle) à mes vues et n'hésite pas à déléguer :
+ - DetailActivity délègue ce qu'il peut au DetailFragment
+ - DetailFragment délègue ce qu'il peut à la DetailView
+ - DetailView délègue ce qu'il peut à la RowView
 
 ## Design Pattern utilisés
  - [Factory](https://en.wikipedia.org/wiki/Factory_(object-oriented_programming)) pour les [services](https://github.com/gdemiollis/Starpedia/blob/master/app/src/main/java/fr/and1droid/starpedia/service/ServiceFactory.java) et les [fragmnets de détail](https://github.com/gdemiollis/Starpedia/blob/master/app/src/main/java/fr/and1droid/starpedia/ui/detail/FragmentFactory.java)
@@ -50,3 +56,4 @@ $ ./gradlew test
  - Terminer la branche Search. Le but étant d'appeler en parallèles plusieurs services et de merger les réponses dans un seul et même flow de réponse avec RXJava2.
  - Implémenter une version tablette digne de ce nom
  - Les objects sont actuellement passés entre les écrans sous forme Serializable. Mesurer si c'est plus efficace de les transformer en Parcelable
+ - Il faudrait s'attaquer au databinding maintenant que c'est mature
