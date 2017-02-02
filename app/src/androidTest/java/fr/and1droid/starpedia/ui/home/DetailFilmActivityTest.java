@@ -39,7 +39,7 @@ public class DetailFilmActivityTest {
         onView(withId(R.id.category_list)).perform(actionOnItemAtPosition(2, click()));
         onView(withId(R.id.swentity_list)).perform(actionOnItemAtPosition(0, click()));
 
-        onView(withContentDescription("Navigate up")).check(matches(isDisplayed()));
+        onView(withContentDescription(R.string.abc_action_bar_up_description)).check(matches(isDisplayed()));
 
         onView(allOf(withId(R.id.value),
                 childAtPosition(childAtPosition(withId(R.id.release_date), 1), 0)))
